@@ -1,0 +1,44 @@
+[
+  {
+    "file": "src/dllist.c",
+    "arguments": [
+      "clang",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c11",
+      "-pedantic",
+      "-g",
+      "-Iinclude",
+      "-MMD",
+      "-MP",
+      "-c",
+      "src/dllist.c",
+      "-o",
+      "build/obj/dllist.o"
+    ],
+    "directory": "/home/giogio/Prog/class/dsa_class",
+    "output": "build/obj/dllist.o"
+  },
+  {
+    "file": "src/slist.c",
+    "arguments": [
+      "clang",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c11",
+      "-pedantic",
+      "-g",
+      "-Iinclude",
+      "-MMD",
+      "-MP",
+      "-c",
+      "src/slist.c",
+      "-o",
+      "build/obj/slist.o"
+    ],
+    "directory": "/home/giogio/Prog/class/dsa_class",
+    "output": "build/obj/slist.o"
+  }
+]
