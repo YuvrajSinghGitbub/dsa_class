@@ -38,6 +38,7 @@ void slist_destroy(slist_t* list) {
 
   while (curr_node != NULL) {
     node_t* next_node = curr_node->next;
+    free(curr_node->data);
     free(curr_node);
     curr_node = next_node;
   }
@@ -294,4 +295,39 @@ void slist_print(const struct slist* list, slist_print_fn print_fn) {
     print_fn(curr_node->data);
     curr_node = curr_node->next;
   }
+  printf("NULL\n");
+}
+
+// return iterator to the first node of the list
+slist_node_t* slist_being(const slist_t* list) {
+  if (!list) {
+    return NULL;
+  }
+
+  // cast the internal node to the public interface (slist_node_t)
+  return (slist_node_t*)list->head;
+}
+
+// returns an iterator to the next element of the `iterator`
+slist_node_t* slist_next(slist_node_t* iterator) {
+  if (!iterator) {
+    return NULL;
+  }
+
+  // cast to `node_t` to access the `next` field
+  node_t* iter_node = (node_t*)iterator;
+
+  return iter_node->next;
+}
+
+// returns the data of the current `iterator`
+void* slist_data(slist_node_t* iterator) {
+  if (!iterator) {
+    return NULL;
+  }
+
+  // cast to `node_t` to access the `next` field
+  node_t* iter_node = (node_t*)iterator;
+
+  return iter_node->data;
 }

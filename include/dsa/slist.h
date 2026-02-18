@@ -53,4 +53,18 @@ typedef void (*slist_print_fn)(void* data);
 // itereate the entire list, printing the list in the process
 void slist_print(const slist_t* list, slist_print_fn print_fn);
 
+// -------- The iterator pattern --------
+
+// `slit_node_t` is just `node_t*`
+typedef struct node slist_node_t;
+
+// return iterator to the first node of the list
+slist_node_t* slist_being(const slist_t* list);
+
+// returns an iterator to the next element of the `iterator`
+slist_node_t* slist_next(slist_node_t* iterator);
+
+// returns the data of the current `iterator`
+void* slist_data(slist_node_t* iterator);
+
 #endif  // DSA_SLIST_H
