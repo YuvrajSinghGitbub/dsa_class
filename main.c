@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "dsa/dllist.h"
 #include "dsa/slist.h"
 
 void print_int(void* data) {
@@ -8,7 +9,12 @@ void print_int(void* data) {
   printf("%d -> ", value);
 }
 
-int main(void) {
+void dlist_print_int(void* data) {
+  int value = *(int*)data;
+  printf("%d - ", value);
+}
+
+void test_single_list(void) {
   slist_t* list = slist_create();
 
   for (int i = 0; i <= 5; i++) {
@@ -16,9 +22,25 @@ int main(void) {
     *data = i * 10;
     slist_append_front(list, data);
   }
-  // 50 -> 40 -> 30 -> 20 -> 10 -> 0 -> NULL;
 
   slist_print(list, print_int);
+  slist_destroy(list);
+}
 
+void test_dlist(void) {
+  dllist_t* list = dllist_create();
+
+  for (int i = 5; i > 0; i--) {
+    int* data = malloc(sizeof(int));
+    *data = i;
+    dllist_append_front(list, data);
+  }
+
+  dllist_print(list, dlist_print_int);
+  dllist_destroy(list);
+}
+
+int main(void) {
+  test_dlist();
   return 0;
 }

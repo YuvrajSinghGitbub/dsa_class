@@ -9,7 +9,7 @@ typedef struct dllist dllist_t;
 dllist_t* dllist_create(void);
 
 // take a pointer to the list and destroy it iteratively
-void dllist_destroy(dllist_t* head);
+void dllist_destroy(dllist_t* list);
 
 // append a new data at the front
 // return: 0 if success, -1 if allocation failure
