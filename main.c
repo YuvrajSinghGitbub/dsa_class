@@ -37,6 +37,22 @@ void test_dlist(void) {
   }
 
   dllist_print(list, dlist_print_int);
+
+  dllist_delete_front(list, NULL);  // 1
+  dllist_delete_front(list, NULL);  // 2
+  dllist_delete_front(list, NULL);  // 3
+  dllist_delete_front(list, NULL);  // 4
+  dllist_delete_front(list, NULL);  // 5
+
+  dllist_print(list, dlist_print_int);
+
+  for (int i = 5; i > 0; i--) {
+    int* data = malloc(sizeof(int));
+    *data = i;
+    dllist_append_end(list, data);
+  }
+  dllist_print(list, dlist_print_int);
+
   dllist_destroy(list);
 }
 
